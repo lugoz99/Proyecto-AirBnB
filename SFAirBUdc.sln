@@ -19,12 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFAirBUdc.Application.Imple
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFAirBUdc.Repository.Contracts", "SFAirBUdc.Repository.Contracts\SFAirBUdc.Repository.Contracts.csproj", "{0FB112AB-7AF9-41C1-88BA-AA1C4330D36D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFAirBUdc.Repository.Implementatios", "SFAirBUdc.Repository.Implementatios\SFAirBUdc.Repository.Implementatios.csproj", "{BA20BF00-6ACD-4D11-BF19-62A988CCC0B9}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{D620B9C9-6860-437F-8D8F-18685272DFF6}"
-	ProjectSection(SolutionItems) = preProject
-		Notas.md = Notas.md
-	EndProjectSection
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SFAirBUdc.Repository.Implementation", "SFAirBUdc.Repository.Implementatios\SFAirBUdc.Repository.Implementation.csproj", "{BA20BF00-6ACD-4D11-BF19-62A988CCC0B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

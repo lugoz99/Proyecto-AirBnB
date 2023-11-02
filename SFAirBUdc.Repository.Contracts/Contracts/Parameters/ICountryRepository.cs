@@ -7,13 +7,13 @@ namespace SFAirBUdc.Repository.Contracts.Contracts.Parameters
     {
         // Se define las operaciones CRUD
         CountryDbModel CreateRecord(CountryDbModel record);
-        
+
         int DeleteRecord(int recorId);
 
         int UpdateRecord(CountryDbModel record);
 
         CountryDbModel GetRecord(int recorId);
 
-        IEnumerable<CountryDbModel> GetAllRecords();
+        IEnumerable<CountryDbModel> GetAllRecords(string filter);
     }
 }

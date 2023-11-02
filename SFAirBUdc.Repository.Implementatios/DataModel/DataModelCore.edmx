@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Core_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="AIRBNB_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="City">
           <Key>
             <PropertyRef Name="Id" />
@@ -196,7 +196,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Core_DBModelStoreContainer">
+        <EntityContainer Name="AIRBNB_DBModelStoreContainer">
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
@@ -243,7 +243,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Core_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="AIRBNB_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="City">
           <Key>
             <PropertyRef Name="Id" />
@@ -499,9 +499,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Core_DBModelStoreContainer" CdmEntityContainer="Core_DBEntities">
+        <EntityContainerMapping StorageEntityContainer="AIRBNB_DBModelStoreContainer" CdmEntityContainer="Core_DBEntities">
           <EntitySetMapping Name="City">
-            <EntityTypeMapping TypeName="Core_DBModel.City">
+            <EntityTypeMapping TypeName="AIRBNB_DBModel.City">
               <MappingFragment StoreEntitySet="City">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CityName" ColumnName="CityName" />
@@ -510,7 +510,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Country">
-            <EntityTypeMapping TypeName="Core_DBModel.Country">
+            <EntityTypeMapping TypeName="AIRBNB_DBModel.Country">
               <MappingFragment StoreEntitySet="Country">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CountryName" ColumnName="CountryName" />
@@ -518,7 +518,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Customer">
-            <EntityTypeMapping TypeName="Core_DBModel.Customer">
+            <EntityTypeMapping TypeName="AIRBNB_DBModel.Customer">
               <MappingFragment StoreEntitySet="Customer">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -530,7 +530,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Feedback">
-            <EntityTypeMapping TypeName="Core_DBModel.Feedback">
+            <EntityTypeMapping TypeName="AIRBNB_DBModel.Feedback">
               <MappingFragment StoreEntitySet="Feedback">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="RateForOwner" ColumnName="RateForOwner" />
@@ -542,7 +542,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MultimediaType">
-            <EntityTypeMapping TypeName="Core_DBModel.MultimediaType">
+            <EntityTypeMapping TypeName="AIRBNB_DBModel.MultimediaType">
               <MappingFragment StoreEntitySet="MultimediaType">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="MultimediaTypeName" ColumnName="MultimediaTypeName" />
@@ -550,7 +550,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Property">
-            <EntityTypeMapping TypeName="Core_DBModel.Property">
+            <EntityTypeMapping TypeName="AIRBNB_DBModel.Property">
               <MappingFragment StoreEntitySet="Property">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="PropertyAddress" ColumnName="PropertyAddress" />
@@ -570,7 +570,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PropertyMultimedia">
-            <EntityTypeMapping TypeName="Core_DBModel.PropertyMultimedia">
+            <EntityTypeMapping TypeName="AIRBNB_DBModel.PropertyMultimedia">
               <MappingFragment StoreEntitySet="PropertyMultimedia">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="MultimediaName" ColumnName="MultimediaName" />
@@ -581,7 +581,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PropertyOwner">
-            <EntityTypeMapping TypeName="Core_DBModel.PropertyOwner">
+            <EntityTypeMapping TypeName="AIRBNB_DBModel.PropertyOwner">
               <MappingFragment StoreEntitySet="PropertyOwner">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -593,7 +593,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Reservation">
-            <EntityTypeMapping TypeName="Core_DBModel.Reservation">
+            <EntityTypeMapping TypeName="AIRBNB_DBModel.Reservation">
               <MappingFragment StoreEntitySet="Reservation">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="EnterDate" ColumnName="EnterDate" />

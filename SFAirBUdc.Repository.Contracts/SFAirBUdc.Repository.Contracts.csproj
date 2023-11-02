@@ -41,11 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\Parameters\ICityRepository.cs" />
     <Compile Include="Contracts\Parameters\ICountryRepository.cs" />
+    <Compile Include="Contracts\Parameters\IFeedBackRepository.cs" />
     <Compile Include="DbModel\Parameters\CityDbModel.cs" />
-    <Compile Include="DbModel\Parameters\CountryDBModel.cs" />
+    <Compile Include="DbModel\Parameters\CountryDbModel.cs" />
+    <Compile Include="DbModel\Parameters\FeedBackDbModel.cs" />
+    <Compile Include="DbModel\Parameters\ReservationDbModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SFAirBUdc.Application.Contracts\SFAirBUdc.Application.Contracts.csproj">
+      <Project>{c3c26cca-0924-486d-aff0-3ab63c997906}</Project>
+      <Name>SFAirBUdc.Application.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

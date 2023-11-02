@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\Parameters\ICityApplication.cs" />
+    <Compile Include="Contracts\Parameters\ICountryApplication.cs" />
+    <Compile Include="DTO\parameters\CityDTO.cs" />
+    <Compile Include="DTO\parameters\CountryDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

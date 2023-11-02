@@ -92,35 +92,26 @@
     <Compile Include="DataModel\Reservation.cs">
       <DependentUpon>DataModelCore.tt</DependentUpon>
     </Compile>
+    <Compile Include="Implementation\Parameters\CityImplementationRepository.cs" />
     <Compile Include="Implementation\Parameters\CountryImplementationRepository.cs" />
+    <Compile Include="Implementation\Parameters\FeedBackImplementationRepository.cs" />
     <Compile Include="Mappers\BaseMapperRepository.cs" />
+    <Compile Include="Mappers\Parameters\CityMapperRepository.cs" />
     <Compile Include="Mappers\Parameters\CountryMapperRepository.cs" />
+    <Compile Include="Mappers\Parameters\FeedbackMapperRepository.cs" />
+    <Compile Include="Mappers\Parameters\ReservationMapperRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="DataModel\DataModelCore.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DataModelCore.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="DataModel\DataModelCore.edmx.diagram">
       <DependentUpon>DataModelCore.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="DataModel\DataModelCore.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DataModelCore.Context.cs</LastGenOutput>
-      <DependentUpon>DataModelCore.edmx</DependentUpon>
-    </Content>
-    <Content Include="DataModel\DataModelCore.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataModelCore.edmx</DependentUpon>
-      <LastGenOutput>DataModelCore.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -132,5 +123,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="DataModel\DataModelCore.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataModelCore.edmx</DependentUpon>
+      <LastGenOutput>DataModelCore.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DataModel\DataModelCore.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataModelCore.edmx</DependentUpon>
+      <LastGenOutput>DataModelCore.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

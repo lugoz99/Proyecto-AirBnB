@@ -173,12 +173,19 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\Parameters\CityController.cs" />
+    <Compile Include="Controllers\Parameters\CountryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mappers\MapperBaseGui.cs" />
+    <Compile Include="Mappers\Parameters\CityMapperGui.cs" />
+    <Compile Include="Mappers\Parameters\CountryMapperGui.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Parameters\CityModel.cs" />
+    <Compile Include="Models\Parameters\CountryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -253,6 +260,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\City\Create.cshtml" />
+    <Content Include="Views\City\Delete.cshtml" />
+    <Content Include="Views\City\Details.cshtml" />
+    <Content Include="Views\City\Edit.cshtml" />
+    <Content Include="Views\City\Index.cshtml" />
+    <Content Include="Views\Country\Create.cshtml" />
+    <Content Include="Views\Country\Delete.cshtml" />
+    <Content Include="Views\Country\Details.cshtml" />
+    <Content Include="Views\Country\Edit.cshtml" />
+    <Content Include="Views\Country\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -291,6 +308,10 @@
     <ProjectReference Include="..\SFAirBUdc.Application.Contracts\SFAirBUdc.Application.Contracts.csproj">
       <Project>{c3c26cca-0924-486d-aff0-3ab63c997906}</Project>
       <Name>SFAirBUdc.Application.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SFAirBUdc.Application.Implementation\SFAirBUdc.Application.Implementation.csproj">
+      <Project>{00bb94fb-38a2-43be-b758-63e55e0c3cbb}</Project>
+      <Name>SFAirBUdc.Application.Implementation</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

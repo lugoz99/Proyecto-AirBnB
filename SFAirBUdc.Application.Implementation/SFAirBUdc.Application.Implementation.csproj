@@ -41,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Implementation\Parameters\CityImplemtationApplication.cs" />
+    <Compile Include="Implementation\Parameters\CountryImplementationApplication.cs" />
+    <Compile Include="Mappers\MapperBaseApplication.cs" />
+    <Compile Include="Mappers\parameters\CityMapperApplication.cs" />
+    <Compile Include="Mappers\parameters\CountryMapperApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -52,6 +57,11 @@
       <Project>{0fb112ab-7af9-41c1-88ba-aa1c4330d36d}</Project>
       <Name>SFAirBUdc.Repository.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SFAirBUdc.Repository.Implementatios\SFAirBUdc.Repository.Implementation.csproj">
+      <Project>{ba20bf00-6acd-4d11-bf19-62a988ccc0b9}</Project>
+      <Name>SFAirBUdc.Repository.Implementation</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -33,6 +33,7 @@ namespace SFAirBUdc.Repository.Implementation.Implementation.Parameters
                         City dbRecord = mapper.MapperT2toT1(record);
                         db.City.Add(dbRecord);
                         db.SaveChanges();
+                        // dbRecord asignado el Id que se le asignó en la base de datos
                         record.Id = dbRecord.Id;
                     }
                 }

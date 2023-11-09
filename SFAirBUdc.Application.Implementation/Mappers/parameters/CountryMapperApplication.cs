@@ -12,6 +12,8 @@ namespace SFAirBUdc.Application.Implementation.Mappers.parameters
             {
                 Id = input.Id,
                 Name = input.Name
+                
+
             };
         }
 

@@ -1,6 +1,7 @@
 ﻿using SFAirBUdc.Application.Contracts.Contracts.Parameters;
 using SFAirBUdc.Application.Contracts.DTO.parameters;
 using SFAirBUdc.Application.Implementation.Implementation.Parameters;
+using SFAirBUdc.Application.Implementation.Implementation.Parameters.AirbnbUdc.Application.Implementation.Implementation.Parameters;
 using SFAirBUdc.GUI.Mappers.Parameters;
 using SFAirBUdc.GUI.Models.Parameters;
 using System.Diagnostics;
@@ -12,6 +13,7 @@ namespace SFAirBUdc.GUI.Controllers.Parameters
     public class CityController : Controller
     {
         private ICityApplication app = new CityImplementationApplication();
+        private ICountryApplication countryapp = new CountryImplementationApplication();
         CityMapperGUI mapper = new CityMapperGUI();
 
 
@@ -40,7 +42,16 @@ namespace SFAirBUdc.GUI.Controllers.Parameters
         // GET: CityModels/Create
         public ActionResult Create()
         {
-            return View();
+
+            CityModel model = new CityModel();
+            FillListForView(model);
+            return View(model);
+        }
+
+        private void FillListForView(CityModel model)
+        {
+            CountryMapperGUI countryMapper = new CountryMapperGUI();
+            model.CountryList = countryMapper.MapperT1toT2(countryapp.GetAllRecords(string.Empty));
         }
 
         // POST: CityModels/Create
@@ -48,12 +59,13 @@ namespace SFAirBUdc.GUI.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name")] CityModel cityModel)
+        public ActionResult Create(CityModel cityModel)
         {
+            // del objeto country no me tenga en cuenta el Name
+            ModelState.Remove("Country.Name");
             if (ModelState.IsValid)
             {
                 CityDTO cityDTO = mapper.MapperT2toT1(cityModel);
-                Debug.WriteLine($"Id: {cityDTO.Id}, Name: {cityDTO.Name}");
                 app.CreateRecord(cityDTO);
                 return RedirectToAction("Index");
             }
@@ -73,6 +85,8 @@ namespace SFAirBUdc.GUI.Controllers.Parameters
             {
                 return HttpNotFound();
             }
+            // llena la lista de paises
+            FillListForView(cityModel);
             return View(cityModel);
         }
 
@@ -81,10 +95,16 @@ namespace SFAirBUdc.GUI.Controllers.Parameters
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name")] CityModel cityModel)
+        public ActionResult Edit(CityModel cityModel)
         {
+            Debug.WriteLine($"city debug Id: {cityModel.Country.Id}");
+            Debug.WriteLine($"city debug Id: {cityModel.Name}");
+            ModelState.Remove("Country.Name");
+            FillListForView(cityModel);
             if (ModelState.IsValid)
             {
+                Debug.WriteLine($"Entre aqui: {cityModel.Country.Id}");
+
                 CityDTO cityDTO = mapper.MapperT2toT1(cityModel);
                 app.UpdateRecord(cityDTO);
                 return RedirectToAction("Index");

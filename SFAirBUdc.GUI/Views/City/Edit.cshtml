@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>CityModel</h4>
         <hr />
@@ -19,9 +19,22 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-sm-8">
                 @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-sm-4">
+                @Html.LabelFor(model => model.Country.Id)
+                @if (Model.CountryList != null && Model.CountryList.Any())
+                {
+                    @Html.DropDownListFor(model => model.Country.Id, new SelectList(Model.CountryList, "Id", "Name"), new { @class = "form-control selectpicker border", @id = "selRegion", @data_live_search = "true" })
+                    @Html.ValidationMessageFor(model => model.Country.Id, "", new { @class = "text-danger" })
+                }
+                else
+                {
+                    <p>No hay países disponibles.</p>
+                }
+                @*@Html.DropDownListFor(model => model.Country.Id, new SelectList(Model.CountryList, "Id", "Name"), new { @class = "form-control selectpicker border", @id = "selRegion", @data_live_search = "true" })*@
             </div>
         </div>
 

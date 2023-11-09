@@ -29,13 +29,7 @@ namespace SFAirBUdc.Repository.Implementation.Mappers.Parameters
             return list;
         }
 
-        //public override IEnumerable<CityDbModel> MapperT1toT2(IEnumerable<City> input)
-        //{
-        //    foreach (var item in input)
-        //    {
-        //        yield return MapperT1toT2(item);
-        //    }
-        //}
+     
 
         public override City MapperT2toT1(CityDbModel input)
         {
@@ -43,7 +37,7 @@ namespace SFAirBUdc.Repository.Implementation.Mappers.Parameters
             {
                 Id = input.Id,
                 CityName = input.Name,
-                Country = new CountryMapperRepository().MapperT2toT1(input.Country)
+                CountryId = input.Country.Id,
             };
         }
 

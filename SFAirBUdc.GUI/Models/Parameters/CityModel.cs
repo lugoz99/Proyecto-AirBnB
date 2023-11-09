@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace SFAirBUdc.GUI.Models.Parameters
@@ -15,5 +17,7 @@ namespace SFAirBUdc.GUI.Models.Parameters
 
         [Required]
         public CountryModel Country { get; set; }
+
+        public IEnumerable<CountryModel> CountryList { get; set; }
     }
 }

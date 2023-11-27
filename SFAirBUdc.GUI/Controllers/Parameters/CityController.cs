@@ -1,9 +1,12 @@
-﻿using SFAirBUdc.Application.Contracts.Contracts.Parameters;
+﻿using Microsoft.Reporting.WebForms;
+using SFAirBUdc.Application.Contracts.Contracts.Parameters;
 using SFAirBUdc.Application.Contracts.DTO.parameters;
 using SFAirBUdc.Application.Implementation.Implementation.Parameters;
 using SFAirBUdc.Application.Implementation.Implementation.Parameters.AirbnbUdc.Application.Implementation.Implementation.Parameters;
 using SFAirBUdc.GUI.Mappers.Parameters;
 using SFAirBUdc.GUI.Models.Parameters;
+using SFAirBUdc.GUI.Models.ReportModels;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
 using System.Web.Mvc;
@@ -135,6 +138,59 @@ namespace SFAirBUdc.GUI.Controllers.Parameters
             app.DeleteRecord(id);
             return RedirectToAction("Index");
         }
+
+
+
+        public ActionResult GenerateReport(string format = "PDF")
+        {
+            // traer todas las ciudades
+            var list = app.GetAllRecords(string.Empty);
+            CityMapperGUI cityMapperGUI = new CityMapperGUI();
+            List<CitiesByCountryReportModel> recordsList = new List<CitiesByCountryReportModel>();
+
+            // para cada ciudad que esta en la lista, la convierto a un objeto de tipo CitiesByCountryReportModel
+            foreach (var city in list)
+            {
+                recordsList.Add(
+                    new CitiesByCountryReportModel()
+                    {
+                        Id = city.Id.ToString(),
+                        Name = city.Name,
+                        CountryId = city.Country.Id.ToString(),
+                        CountryName = city.Country.Name,
+                    });
+            }
+
+            string reportPath = Server.MapPath("~/Reports/RdlcFiles/CitiesByCountryReport.rdlc");
+            //List<string> dataSets = new List<string> { "CustomerList" };
+            // el local report nos permite renderizar el reporte , es decir, convertirlo a un formato que se pueda mostrar en el navegador
+            LocalReport lr = new LocalReport();
+
+            lr.ReportPath = reportPath;
+            lr.EnableHyperlinks = true;
+
+            Warning[] warnings;
+            string[] streams;
+            byte[] renderedBytes;
+            string mimeType, encoding, fileNameExtension;
+
+            ReportDataSource datasource = new ReportDataSource("CitiesByCountryDataSet", recordsList);
+            lr.DataSources.Add(datasource);
+
+
+            renderedBytes = lr.Render(
+            format,
+            string.Empty,
+            out mimeType,
+            out encoding,
+            out fileNameExtension,
+            out streams,
+            out warnings
+            );
+            // renderizo el reporte Y se muestra en el navegador
+            return File(renderedBytes, mimeType);
+        }
+
 
     }
 }

@@ -1,8 +1,6 @@
 ﻿using Microsoft.Reporting.WebForms;
 using SFAirBUdc.Application.Contracts.Contracts.Parameters;
 using SFAirBUdc.Application.Contracts.DTO.parameters;
-using SFAirBUdc.Application.Implementation.Implementation.Parameters;
-using SFAirBUdc.Application.Implementation.Implementation.Parameters.AirbnbUdc.Application.Implementation.Implementation.Parameters;
 using SFAirBUdc.GUI.Mappers.Parameters;
 using SFAirBUdc.GUI.Models.Parameters;
 using SFAirBUdc.GUI.Models.ReportModels;
@@ -15,14 +13,23 @@ namespace SFAirBUdc.GUI.Controllers.Parameters
 {
     public class CityController : Controller
     {
-        private ICityApplication app = new CityImplementationApplication();
-        private ICountryApplication countryapp = new CountryImplementationApplication();
         CityMapperGUI mapper = new CityMapperGUI();
+
+
+        private readonly ICityApplication app;
+        private readonly ICountryApplication countryapp2;
+
+        public CityController(ICityApplication cityApplication, ICountryApplication countryApplication)
+        {
+            this.app = cityApplication;
+            this.countryapp2 = countryApplication;
+        }
 
 
         // GET: City
         public ActionResult Index(string filter = "")
         {
+            //var list = mapper.MapperT1toT2(app.GetAllRecords(filter));
             var list = mapper.MapperT1toT2(app.GetAllRecords(filter));
             return View(list);
         }
@@ -54,7 +61,7 @@ namespace SFAirBUdc.GUI.Controllers.Parameters
         private void FillListForView(CityModel model)
         {
             CountryMapperGUI countryMapper = new CountryMapperGUI();
-            model.CountryList = countryMapper.MapperT1toT2(countryapp.GetAllRecords(string.Empty));
+            model.CountryList = countryMapper.MapperT1toT2(countryapp2.GetAllRecords(string.Empty));
         }
 
         // POST: CityModels/Create

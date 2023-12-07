@@ -1,6 +1,5 @@
 ﻿using SFAirBUdc.Application.Contracts.Contracts.Parameters;
 using SFAirBUdc.Application.Contracts.DTO.parameters;
-using SFAirBUdc.Application.Implementation.Implementation.Parameters.AirbnbUdc.Application.Implementation.Implementation.Parameters;
 using SFAirBUdc.GUI.Mappers.Parameters;
 using SFAirBUdc.GUI.Models.Parameters;
 using System;
@@ -12,9 +11,14 @@ namespace SFAirBUdc.GUI.Controllers.Parameters
 {
     public class CountryController : Controller
     {
-        private ICountryApplication app = new CountryImplementationApplication();
+        private ICountryApplication app;
 
         CountryMapperGUI mapper = new CountryMapperGUI();
+
+        public CountryController(ICountryApplication _repository)
+        {
+           this.app = _repository;
+        }
 
         // GET: CountryModels
         public ActionResult Index(string filter = "")

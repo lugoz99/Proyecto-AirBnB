@@ -10,15 +10,13 @@ using System.Collections.Generic;
 namespace SFAirBUdc.Application.Implementation.Implementation.Parameters
 {
 
-    namespace AirbnbUdc.Application.Implementation.Implementation.Parameters
-    {
         public class CountryImplementationApplication : ICountryApplication
         {
             ICountryRepository _countryRepository;
 
-            public CountryImplementationApplication()
+            public CountryImplementationApplication(ICountryRepository countryRepository)
             {
-                this._countryRepository = new CountryImplementationRepository();
+                this._countryRepository = countryRepository;
             }
 
             public CountryDTO CreateRecord(CountryDTO record)
@@ -57,5 +55,5 @@ namespace SFAirBUdc.Application.Implementation.Implementation.Parameters
                 return updated;
             }
         }
-    }
+
 }

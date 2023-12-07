@@ -1,3 +1,4 @@
+using SFAirBUdc.GUI.App_Start;
 using System.Data.Entity;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -13,6 +14,8 @@ namespace SFAirBUdc.GUI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            IoCConfiguration.Configure();
         }
     }
 }

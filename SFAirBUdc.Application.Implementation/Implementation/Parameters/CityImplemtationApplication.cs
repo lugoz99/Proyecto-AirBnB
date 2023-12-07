@@ -12,9 +12,9 @@ namespace SFAirBUdc.Application.Implementation.Implementation.Parameters
     {
         ICityRepository _countryRepository;
 
-        public CityImplementationApplication()
+        public CityImplementationApplication(ICityRepository cityRepository)
         {
-            this._countryRepository = new CityImplementationRepository();
+            this._countryRepository = cityRepository;
         }
 
         /// <summary>

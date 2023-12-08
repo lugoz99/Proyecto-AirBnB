@@ -72,17 +72,21 @@ namespace SFAirBUdc.Repository.Implementatios.Implementation.Parameters
             // TODO : Aqui es db.SaveChanges o return 1 si se actualizo o cero si no
             try
             {
-                using(Core_DBEntities db = new Core_DBEntities())
+                using (Core_DBEntities db = new Core_DBEntities())
                 {
-                    IEnumerable<Customer> records = db.Customer.Where(x => x.Equals(filter)).ToList();
+                    var records = (
+                        from po in db.Customer
+                        where po.FirstName.Contains(filter)
+                        select po
+                        );
                     CustomerMapperRepository mapper = new CustomerMapperRepository();
                     return mapper.MapperT1toT2(records);
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
 
-                throw;
+                throw e;
             }
         }
 

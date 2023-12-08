@@ -38,6 +38,7 @@ namespace SFAirBUdc.Repository.Implementatios.Mappers.Parameters
                 FirstName = input.FirstName,
                 FamilyName = input.FamilyName,
                 Cellphone = input.Cellphone,
+                Email = input.Email,
                 Photo = input.Photo,
 
             };

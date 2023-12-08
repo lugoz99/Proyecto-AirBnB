@@ -41,7 +41,20 @@ namespace SFAirBUdc.Repository.Implementatios.Implementation.Parameters
 
         public int DeleteRecord(int recordId)
         {
-            throw new NotImplementedException();
+            using( Core_DBEntities db = new Core_DBEntities())
+            {
+                var record = db.PropertyOwner.Find(recordId);
+                if ( record != null)
+                {
+                    db.PropertyOwner.Remove(record);
+                    db.SaveChanges();
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }   
         }
 
         public IEnumerable<PropertyOwnerDbModel> GetAllRecords(string filter)

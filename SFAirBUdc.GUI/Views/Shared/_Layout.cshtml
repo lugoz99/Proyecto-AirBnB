@@ -24,6 +24,8 @@
                     <li>@Html.ActionLink("Contacto", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                      <li>@Html.ActionLink("Ciudad", "Index", "City", new { area = "" }, new { @class = "nav-link" })</li>
                      <li>@Html.ActionLink("Property", "Index", "Property", new { area = "" }, new { @class = "nav-link" })</li>
+                     <li>@Html.ActionLink("PropertyOwner", "Index", "PropertyOwner", new { area = "" }, new { @class = "nav-link" })</li>
+                     <li>@Html.ActionLink("Customer", "Index", "Customer", new { area = "" }, new { @class = "nav-link" })</li>
                     @using Microsoft.AspNet.Identity
                     @if (Request.IsAuthenticated)
                     {

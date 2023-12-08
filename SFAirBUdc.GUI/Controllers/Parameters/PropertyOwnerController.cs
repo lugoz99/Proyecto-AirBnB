@@ -50,7 +50,7 @@ namespace SFAirBUdc.GUI.Controllers.Parameters
         // GET: PropertyOwner/Create
         public ActionResult Create()
         {
-            CityModel model = new CityModel();
+            PropertyOwnerModel model = new PropertyOwnerModel();
             return View(model);
         }
 
@@ -63,14 +63,9 @@ namespace SFAirBUdc.GUI.Controllers.Parameters
         {
             if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    PropertyOwnerDTO record = mapper.MapperT2toT1(propertyOwner);
-                    app.CreateRecord(record);
-                    return RedirectToAction("Index");
-                }
-
-                return View(propertyOwner);
+                PropertyOwnerDTO record = mapper.MapperT2toT1(propertyOwner);
+                app.CreateRecord(record);
+                return RedirectToAction("Index");
             }
 
             return View(propertyOwner);

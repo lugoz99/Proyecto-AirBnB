@@ -11,22 +11,47 @@ namespace SFAirBUdc.GUI.Mappers.Parameters
     {
         public override CustomerModel MapperT1toT2(CustomerDTO input)
         {
-            throw new NotImplementedException();
+            return new CustomerModel
+            {
+                Id = input.Id,
+                FirstName = input.FirstName,
+                FamilyName = input.FamilyName,
+                Email = input.Email,
+                Cellphone = input.Cellphone,
+                Photo = input.Photo,
+            };
         }
 
         public override IEnumerable<CustomerModel> MapperT1toT2(IEnumerable<CustomerDTO> input)
         {
-            throw new NotImplementedException();
+            IList<CustomerModel> list = new List<CustomerModel>();
+            foreach (var item in input)
+            {
+                list.Add(MapperT1toT2(item));
+            }
+            return list;
         }
-
         public override CustomerDTO MapperT2toT1(CustomerModel input)
         {
-            throw new NotImplementedException();
+            return new CustomerDTO
+            {
+                Id = input.Id,
+                FirstName = input.FirstName,
+                FamilyName = input.FamilyName,
+                Email = input.Email,
+                Cellphone = input.Cellphone,
+                Photo = input.Photo,
+            };  
         }
 
         public override IEnumerable<CustomerDTO> MapperT2toT1(IEnumerable<CustomerModel> input)
         {
-            throw new NotImplementedException();
+            IList<CustomerDTO> list = new List<CustomerDTO>();
+            foreach (var item in input)
+            {
+                list.Add(MapperT2toT1(item));
+            }
+            return list;
         }
     }
 }

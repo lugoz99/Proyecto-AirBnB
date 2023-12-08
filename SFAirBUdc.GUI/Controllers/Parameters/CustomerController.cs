@@ -1,45 +1,51 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using SFAirBUdc.GUI.Models;
+﻿using SFAirBUdc.Application.Contracts.Contracts.Parameters;
+using SFAirBUdc.Application.Contracts.DTO.parameters;
+using SFAirBUdc.GUI.Mappers.Parameters;
 using SFAirBUdc.GUI.Models.Parameters;
+using System.Net;
+using System.Web.Mvc;
 
 namespace SFAirBUdc.GUI.Controllers
 {
     public class CustomerController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private readonly ICustomerApplication _app;
+        CustomerMapperGui mapper = new CustomerMapperGui();
+
+
+        public CustomerController(ICustomerApplication app)
+        {
+            this._app = app; 
+        }
 
         // GET: Customer
-        public ActionResult Index()
+        public ActionResult Index(string filter = "")
         {
-            return View(db.CustomerModels.ToList());
+            var list = mapper.MapperT1toT2(_app.GetAllRecords(filter));
+            return View(list);
         }
 
         // GET: Customer/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (id <= 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CustomerModel customerModel = db.CustomerModels.Find(id);
-            if (customerModel == null)
+            CustomerModel record = mapper.MapperT1toT2(_app.GetRecord((int)id));
+            if (record == null)
             {
                 return HttpNotFound();
             }
-            return View(customerModel);
+            return View(record);
         }
 
         // GET: Customer/Create
         public ActionResult Create()
         {
-            return View();
+            CustomerModel model = new CustomerModel();
+
+            return View(model);
         }
 
         // POST: Customer/Create
@@ -51,8 +57,8 @@ namespace SFAirBUdc.GUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.CustomerModels.Add(customerModel);
-                db.SaveChanges();
+                CustomerDTO record = mapper.MapperT2toT1(customerModel);
+                _app.CreateRecord(record);
                 return RedirectToAction("Index");
             }
 
@@ -66,12 +72,13 @@ namespace SFAirBUdc.GUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CustomerModel customerModel = db.CustomerModels.Find(id);
+            CustomerDTO customerModel = _app.GetRecord((int)id);  
+
             if (customerModel == null)
             {
                 return HttpNotFound();
             }
-            return View(customerModel);
+            return View(mapper.MapperT1toT2(customerModel) );
         }
 
         // POST: Customer/Edit/5
@@ -83,8 +90,9 @@ namespace SFAirBUdc.GUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customerModel).State = EntityState.Modified;
-                db.SaveChanges();
+
+                CustomerDTO record = mapper.MapperT2toT1(customerModel);
+                _app.UpdateRecord(record);
                 return RedirectToAction("Index");
             }
             return View(customerModel);
@@ -93,16 +101,16 @@ namespace SFAirBUdc.GUI.Controllers
         // GET: Customer/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (id <= 0)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CustomerModel customerModel = db.CustomerModels.Find(id);
-            if (customerModel == null)
+            CustomerModel record = mapper.MapperT1toT2(_app.GetRecord((int)id));
+            if (record == null)
             {
                 return HttpNotFound();
             }
-            return View(customerModel);
+            return View(record);
         }
 
         // POST: Customer/Delete/5
@@ -110,19 +118,10 @@ namespace SFAirBUdc.GUI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            CustomerModel customerModel = db.CustomerModels.Find(id);
-            db.CustomerModels.Remove(customerModel);
-            db.SaveChanges();
+            _app.DeleteRecord((int)id);
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+     
     }
 }

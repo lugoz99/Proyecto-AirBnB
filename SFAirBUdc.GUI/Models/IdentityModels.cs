@@ -32,5 +32,13 @@ namespace SFAirBUdc.GUI.Models
         public System.Data.Entity.DbSet<SFAirBUdc.GUI.Models.Parameters.CityModel> CityModels { get; set; }
 
         public System.Data.Entity.DbSet<SFAirBUdc.GUI.Models.Parameters.CountryModel> CountryModels { get; set; }
+
+        public System.Data.Entity.DbSet<SFAirBUdc.Repository.Implementatios.DataModel.Property> Properties { get; set; }
+
+        public System.Data.Entity.DbSet<SFAirBUdc.Repository.Implementatios.DataModel.City> Cities { get; set; }
+
+        public System.Data.Entity.DbSet<SFAirBUdc.Repository.Implementatios.DataModel.PropertyOwner> PropertyOwners { get; set; }
+
+        public System.Data.Entity.DbSet<SFAirBUdc.GUI.Models.Parameters.CustomerModel> CustomerModels { get; set; }
     }
 }

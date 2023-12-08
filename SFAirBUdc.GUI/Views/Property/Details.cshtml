@@ -1,0 +1,106 @@
+﻿@model SFAirBUdc.GUI.Models.Parameters.PropertyModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PropertyModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PropertyAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PropertyAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerAmount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerAmount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckinData)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckinData)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CheckoutData)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CheckoutData)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pets)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pets)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Freezer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Freezer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LaundryService)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LaundryService)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -143,6 +143,7 @@ namespace SFAirBUdc.Repository.Implementation.Implementation.Parameters
                     City dbRecord = mapper.MapperT2toT1(record);
                     db.City.Attach(dbRecord);
                     db.Entry(dbRecord).State = EntityState.Modified;
+                    // TODO : Aqui es db.SaveChanges o return 1 si se actualizo o cero si no
                     return db.SaveChanges();
                 }
             }

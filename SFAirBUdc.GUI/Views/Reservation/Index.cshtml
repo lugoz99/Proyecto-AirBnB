@@ -1,0 +1,81 @@
+﻿@model IEnumerable<SFAirBUdc.GUI.Models.Parameters.ReservationModel>
+
+@{
+    ViewBag.Title = "Reservation List";
+}
+
+<h2 class="fw-bold w-100">@ViewBag.Title</h2>
+<div class="flex justify-content-between mt-2 mb-3 w-100">
+    <div class="w-auto d-flex justify-content-end align-items-center rounded-2">
+        <a href="@Url.Action("Create")" class="btn btn-success text-center px-3" title="Crear nuevo elemento">
+            <i class="bi bi-plus-lg"></i> Create
+        </a>
+    </div>
+</div>
+<div class="container shadow-lg rounded-1 mt-2">
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnterDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OutDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Property.Details)
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EnterDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OutDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Property.Details)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-primary" title="Editar">
+                        <i class="bi bi-pencil-square"></i>
+                    </a> |
+                    <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-warning" title="Eliminar">
+                        <i class="bi bi-eye"></i>
+                    </a> |
+                    <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-danger" title="Eliminar">
+                        <i class="bi bi-trash"></i>
+                    </a> 
+
+
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

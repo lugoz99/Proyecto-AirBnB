@@ -40,5 +40,7 @@ namespace SFAirBUdc.GUI.Models
         public System.Data.Entity.DbSet<SFAirBUdc.Repository.Implementatios.DataModel.PropertyOwner> PropertyOwners { get; set; }
 
         public System.Data.Entity.DbSet<SFAirBUdc.GUI.Models.Parameters.CustomerModel> CustomerModels { get; set; }
+
+        public System.Data.Entity.DbSet<SFAirBUdc.GUI.Models.Parameters.ReservationModel> ReservationModels { get; set; }
     }
 }

@@ -4,17 +4,13 @@ namespace SFAirBUdc.Repository.Contracts.DbModel.Parameters
 {
     public class ReservationDbModel
     {
-        public int Id { get; set; }
+        public long Id { get; set; }
         public DateTime EnterDate { get; set; }
-        public DateTime OudDate { get; set; }
+        public DateTime OutDate { get; set; }
+        public decimal Price { get; set; }
 
-        public float Price { get; set; }
+        public CustomerDbModel Customer { get; set; }
 
-        public int PropertyId { get; set; }
-
-        public int CustomerId { get; set; }
-
-        //public PropertyDbModel {get;set;}
-        //public CustomerDbModel {get;set;}
+        public PropertyDbModel Property { get; set; }
     }
 }

@@ -51,6 +51,12 @@ namespace SFAirBUdc.GUI.App_Start
             
             builder.RegisterType<PropertyOwnerImplementationRepository>().As<IPropertyOwnerRepository>().InstancePerRequest();
 
+            // Registro Reservation
+
+            builder.RegisterType<ReservationImplementationApplication>()
+              .As<IReservationApplication>().InstancePerRequest();
+
+            builder.RegisterType<ReservationImplementationRepository>().As<IReservationRepository>().InstancePerRequest();
 
 
         }

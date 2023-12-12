@@ -59,11 +59,13 @@
     <Compile Include="Contracts\Parameters\ICustomerApplication.cs" />
     <Compile Include="Contracts\Parameters\IPropertyApplication.cs" />
     <Compile Include="Contracts\Parameters\IPropertyOwnerApplication.cs" />
+    <Compile Include="Contracts\Parameters\IReservationApplication.cs" />
     <Compile Include="DTO\parameters\CityDTO.cs" />
     <Compile Include="DTO\parameters\CountryDTO.cs" />
     <Compile Include="DTO\parameters\CustomerDTO.cs" />
     <Compile Include="DTO\parameters\PropertyDTO.cs" />
     <Compile Include="DTO\parameters\PropertyOwnerDTO.cs" />
+    <Compile Include="DTO\parameters\ReservationDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

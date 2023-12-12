@@ -7,6 +7,8 @@
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 
 </head>
 <body>
@@ -26,6 +28,7 @@
                      <li>@Html.ActionLink("Property", "Index", "Property", new { area = "" }, new { @class = "nav-link" })</li>
                      <li>@Html.ActionLink("PropertyOwner", "Index", "PropertyOwner", new { area = "" }, new { @class = "nav-link" })</li>
                      <li>@Html.ActionLink("Customer", "Index", "Customer", new { area = "" }, new { @class = "nav-link" })</li>
+                     <li>@Html.ActionLink("Reservation", "Index", "Reservation", new { area = "" }, new { @class = "nav-link" })</li>
                     @using Microsoft.AspNet.Identity
                     @if (Request.IsAuthenticated)
                     {

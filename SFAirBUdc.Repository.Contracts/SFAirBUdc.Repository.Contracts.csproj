@@ -60,6 +60,7 @@
     <Compile Include="Contracts\Parameters\IFeedBackRepository.cs" />
     <Compile Include="Contracts\Parameters\IPropertyOwnerRepository.cs" />
     <Compile Include="Contracts\Parameters\IPropertyRepository.cs" />
+    <Compile Include="Contracts\Parameters\IReservationRepository.cs" />
     <Compile Include="DbModel\Parameters\CityDbModel.cs" />
     <Compile Include="DbModel\Parameters\CountryDbModel.cs" />
     <Compile Include="DbModel\Parameters\CustomerDbModel.cs" />

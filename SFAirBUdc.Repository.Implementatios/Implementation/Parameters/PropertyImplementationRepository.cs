@@ -6,6 +6,7 @@ using SFAirBUdc.Repository.Implementatios.DataModel;
 using SFAirBUdc.Repository.Implementatios.Mappers.Parameters;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -43,7 +44,22 @@ namespace SFAirBUdc.Repository.Implementatios.Implementation.Parameters
 
         public int DeleteRecord(int recordId)
         {
-            throw new NotImplementedException();
+
+            using (Core_DBEntities db = new Core_DBEntities())
+            {
+                var dbRecord = db.Property.Find(recordId);
+                if (dbRecord != null)
+                {
+                    db.Property.Remove(dbRecord);
+                    db.SaveChanges();
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+
+            }
         }
 
         public IEnumerable<PropertyDbModel> GetAllRecords(string filter)
@@ -63,13 +79,31 @@ namespace SFAirBUdc.Repository.Implementatios.Implementation.Parameters
 
         public PropertyDbModel GetRecord(int recordId)
         {
-            throw new NotImplementedException();
+            using (Core_DBEntities db = new Core_DBEntities())
+            {
+                
+                PropertyMapperRepository mapper = new PropertyMapperRepository();
+                var record = db.Property.Find(recordId);
+                return mapper.MapperT1toT2(record);
+
+            }
         }
 
         public int UpdateRecord(PropertyDbModel record)
         {
-            throw new NotImplementedException();
+            PropertyMapperRepository mapper = new PropertyMapperRepository();
+            Property dbRecord = mapper.MapperT2toT1(record);
+            using (Core_DBEntities db = new Core_DBEntities())
+            {
+                db.Property.Attach(dbRecord);
+                db.Entry(dbRecord).State = EntityState.Modified;
+                return db.SaveChanges();
+            }
         }
+
+
+
+
 
         public IEnumerable<PropertyDbModel> GetAllRecordsByCityId(int cityId)
         {

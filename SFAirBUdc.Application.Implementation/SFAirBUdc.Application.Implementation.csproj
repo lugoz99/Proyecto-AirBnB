@@ -59,12 +59,14 @@
     <Compile Include="Implementation\Parameters\CustomerImplementationApplication.cs" />
     <Compile Include="Implementation\Parameters\PropertyImplementationApplication.cs" />
     <Compile Include="Implementation\Parameters\PropertyOwnerImplementationApplication.cs" />
+    <Compile Include="Implementation\Parameters\ReservationImplementationApplication.cs" />
     <Compile Include="Mappers\MapperBaseApplication.cs" />
     <Compile Include="Mappers\parameters\CityMapperApplication.cs" />
     <Compile Include="Mappers\parameters\CountryMapperApplication.cs" />
     <Compile Include="Mappers\parameters\CustomerMapperApplication.cs" />
     <Compile Include="Mappers\parameters\PropertyMapperApplication.cs" />
     <Compile Include="Mappers\parameters\PropertyOwnerMapperApplication.cs" />
+    <Compile Include="Mappers\parameters\ReservationMapperApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

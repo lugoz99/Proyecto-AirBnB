@@ -4,41 +4,47 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
-
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>CityModel</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-8">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+    <div class="container">
+        <div class="card shadow-lg p-4 mb-5 rounded mx-auto">
+            <div class="card-header text-center text-info">
+                <h3>Create New City</h3>
             </div>
-            <div class="form-group col-sm-4">
-                @Html.LabelFor(model => model.Country.Id)
-                @Html.DropDownListFor(model => model.Country.Id, new SelectList(Model.CountryList, "Id", "Name"), new { @class = "form-control selectpicker border", @id = "selRegion", @data_live_search = "true" })
-                @Html.ValidationMessageFor(model => model.Country.Id, "", new { @class = "text-danger" })
-            </div>
-        </div>
+            <div class="card-body w-100 d-flex justify-content-center flex-column">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="h-50 m-2 w-100">
+                    <div class="form-group row justify-content-center w-100 container-fluid">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "flex-grow-1 control-label col-md-2 text-end mt-2" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control form-control-lg rounded-0" } })
+                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                    <div class="form-group row justify-content-center mt-2 container-fluid ">
+                        @Html.LabelFor(model => model.Country.Id, htmlAttributes: new { @class = "text-end control-label flex-grow-1 col-md-2 mt-1" })
+                        <div class="col-md-8">
+                            @Html.DropDownListFor(model => model.Country.Id, new SelectList(Model.CountryList, "Id", "Name"), new { @class = "form-select form-select-lg form-control form-control-lg rounded-0 selectpicker border", @id = "selRegion", @data_live_search = "true" })
+                            @Html.ValidationMessageFor(model => model.Country.Id, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group row justify-content-center container-fluid ms-3  mt-2">
+                            <button type="submit" class="btn btn-success mx-3 w-25">Create</button>
+                    </div>
+                </div>
             </div>
+
         </div>
+        <a href="@Url.Action("Index")" class="ms-5 btn btn-secondary rounded-0 w-25" title="volver">
+            <span class="bi bi-arrow-left"> Back</span>
+        </a>
     </div>
+
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

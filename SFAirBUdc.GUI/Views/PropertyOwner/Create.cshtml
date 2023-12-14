@@ -4,68 +4,70 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>PropertyOwner</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+    <div class="container">
+        <div class="card shadow-lg p-4 mb-5 rounded mx-auto">
+            <div class="card-header text-center text-info">
+                <h3>Create New Owner</h3>
             </div>
-        </div>
+            <div class="card-body">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FamilyName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.FamilyName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.FamilyName, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="form-group row w-50 mx-auto ">
+                    <label for="FirstName" class="col-sm-2 col-form-label mt-1 px-2 text-nowrap">First Name:</label>
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control form-control-lg rounded-0" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="form-group row mt-1 w-50 mx-auto">
+                    <label for="FamilyName" class="col-sm-2 col-form-label mt-1 px-2  text-nowrap">Family Name:</label>
+                    <div class="col-sm-10 mt-1">
+                        @Html.EditorFor(model => model.FamilyName, new { htmlAttributes = new { @class = "form-control form-control-lg rounded-0" } })
+                        @Html.ValidationMessageFor(model => model.FamilyName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Cellphone, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Cellphone, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Cellphone, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="form-group row mt-1 w-50 mx-auto">
+                    <label for="Email" class="col-sm-2 col-form-label mt-1 px-2">Email:</label>
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control form-control-lg rounded-0" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Photo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Photo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="form-group row mt-1 w-50 mx-auto">
+                    <label for="Cellphone" class="col-sm-2 col-form-label mt-1 px-2">Cellphone:</label>
+                    <div class="col-sm-10">
+                        @Html.EditorFor(model => model.Cellphone, new { htmlAttributes = new { @class = "form-control form-control-lg rounded-0" } })
+                        @Html.ValidationMessageFor(model => model.Cellphone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <div class="form-group row rounded-0 mt-1 w-50 mx-auto" >
+                    <label for="Photo" class="col-form-label col-sm-2 mt-1">Photo</label>
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(model => model.Photo, new { type = "file", @class = "form-control form-control-lg w-100 rounded-0" })
+                        @Html.ValidationMessageFor(model => model.Photo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="mt-4 bg-primary w-25 d-flex flex-row justify-content-center mx-auto">
+                    <button type="submit" class="btn btn-success rounded-0 flex-grow-1">Create</button>
+                </div>
             </div>
         </div>
+<a href="@Url.Action("Index")" class="ms-5 btn btn-secondary rounded-0 w-25" title="volver">
+    <span class="bi bi-arrow-left"> Back</span>
+</a>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

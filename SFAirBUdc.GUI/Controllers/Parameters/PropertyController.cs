@@ -6,12 +6,14 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Reporting.WebForms;
 using SFAirBUdc.Application.Contracts.Contracts.Parameters;
 using SFAirBUdc.Application.Contracts.DTO.parameters;
 using SFAirBUdc.Application.Implementation.Implementation.Parameters;
 using SFAirBUdc.GUI.Mappers;
 using SFAirBUdc.GUI.Mappers.Parameters;
 using SFAirBUdc.GUI.Models.Parameters;
+using SFAirBUdc.GUI.Models.ReportModels;
 
 namespace SFAirBUdc.GUI.Controllers.Parameters
 {
@@ -167,5 +169,57 @@ namespace SFAirBUdc.GUI.Controllers.Parameters
             app.DeleteRecord(id);
             return RedirectToAction("Index");
         }
+
+
+        public ActionResult GenerateReport(string format = "PDF")
+        {
+            // traer todas las ciudades
+            var list = app.GetAllRecords(string.Empty);
+            CityMapperGUI cityMapperGUI = new CityMapperGUI();
+            List<PropertiesByCityReportModel> recordsList = new List<PropertiesByCityReportModel>();
+
+            // para cada ciudad que esta en la lista, la convierto a un objeto de tipo CitiesByCountryReportModel
+            foreach (var city in list)
+            {
+                recordsList.Add(
+                    new PropertiesByCityReportModel()
+                    {
+                        Id = city.Id.ToString(),
+                        Details = city.Details,
+                        CityId = city.City.Id.ToString(),
+                        Name = city.City.Name,
+                    });
+            }
+
+            string reportPath = Server.MapPath("~/Reports/RdlcFiles/propertiesByCustomerReport.rdlc");
+            //List<string> dataSets = new List<string> { "CustomerList" };
+            // el local report nos permite renderizar el reporte , es decir, convertirlo a un formato que se pueda mostrar en el navegador
+            LocalReport lr = new LocalReport();
+
+            lr.ReportPath = reportPath;
+            lr.EnableHyperlinks = true;
+
+            Warning[] warnings;
+            string[] streams;
+            byte[] renderedBytes;
+            string mimeType, encoding, fileNameExtension;
+
+            ReportDataSource datasource = new ReportDataSource("propertiesByCustomerDataSet", recordsList);
+            lr.DataSources.Add(datasource);
+
+
+            renderedBytes = lr.Render(
+            format,
+            string.Empty,
+            out mimeType,
+            out encoding,
+            out fileNameExtension,
+            out streams,
+            out warnings
+            );
+            // renderizo el reporte Y se muestra en el navegador
+            return File(renderedBytes, mimeType);
+        }
+
     }
-  }
+}

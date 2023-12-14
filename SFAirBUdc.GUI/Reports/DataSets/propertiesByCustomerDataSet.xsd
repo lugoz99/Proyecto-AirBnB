@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="propertiesByCustomerDataSet" targetNamespace="http://tempuri.org/propertiesByCustomerDataSet.xsd" xmlns:mstns="http://tempuri.org/propertiesByCustomerDataSet.xsd" xmlns="http://tempuri.org/propertiesByCustomerDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="propertiesByCustomerDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_UserDSName="propertiesByCustomerDataSet" msprop:Generator_DataSetName="propertiesByCustomerDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Property" msprop:Generator_RowEvHandlerName="PropertyRowChangeEventHandler" msprop:Generator_RowDeletedName="PropertyRowDeleted" msprop:Generator_RowDeletingName="PropertyRowDeleting" msprop:Generator_RowEvArgName="PropertyRowChangeEvent" msprop:Generator_TablePropName="Property" msprop:Generator_RowChangedName="PropertyRowChanged" msprop:Generator_RowChangingName="PropertyRowChanging" msprop:Generator_TableClassName="PropertyDataTable" msprop:Generator_RowClassName="PropertyRow" msprop:Generator_TableVarName="tableProperty" msprop:Generator_UserTableName="Property">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_UserColumnName="Id" type="xs:string" minOccurs="0" />
+              <xs:element name="Details" msprop:Generator_ColumnPropNameInRow="Details" msprop:Generator_ColumnPropNameInTable="DetailsColumn" msprop:Generator_ColumnVarNameInTable="columnDetails" msprop:Generator_UserColumnName="Details" type="xs:string" minOccurs="0" />
+              <xs:element name="CityId" msprop:Generator_ColumnPropNameInRow="CityId" msprop:Generator_ColumnPropNameInTable="CityIdColumn" msprop:Generator_ColumnVarNameInTable="columnCityId" msprop:Generator_UserColumnName="CityId" type="xs:string" minOccurs="0" />
+              <xs:element name="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="City" msprop:Generator_RowEvHandlerName="CityRowChangeEventHandler" msprop:Generator_RowDeletedName="CityRowDeleted" msprop:Generator_RowDeletingName="CityRowDeleting" msprop:Generator_RowEvArgName="CityRowChangeEvent" msprop:Generator_TablePropName="City" msprop:Generator_RowChangedName="CityRowChanged" msprop:Generator_RowChangingName="CityRowChanging" msprop:Generator_TableClassName="CityDataTable" msprop:Generator_RowClassName="CityRow" msprop:Generator_TableVarName="tableCity" msprop:Generator_UserTableName="City">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Id" msprop:Generator_ColumnPropNameInRow="Id" msprop:Generator_ColumnPropNameInTable="IdColumn" msprop:Generator_ColumnVarNameInTable="columnId" msprop:Generator_UserColumnName="Id" type="xs:string" minOccurs="0" />
+              <xs:element name="Name" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_UserColumnName="Name" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  <xs:annotation>
+    <xs:appinfo>
+      <msdata:Relationship name="City_Property" msdata:parent="City" msdata:child="Property" msdata:parentkey="Id" msdata:childkey="CityId" msprop:Generator_UserParentTable="City" msprop:Generator_UserChildTable="Property" msprop:Generator_RelationVarName="relationCity_Property" msprop:Generator_UserRelationName="City_Property" msprop:Generator_ChildPropName="GetPropertyRows" msprop:Generator_ParentPropName="CityRow" />
+    </xs:appinfo>
+  </xs:annotation>
+</xs:schema>

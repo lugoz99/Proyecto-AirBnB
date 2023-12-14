@@ -270,11 +270,23 @@
     <Compile Include="Models\Parameters\PropertyOwnerModel.cs" />
     <Compile Include="Models\Parameters\ReservationModel.cs" />
     <Compile Include="Models\ReportModels\CitiesByCountryReportModel.cs" />
+    <Compile Include="Models\ReportModels\PropertiesByCityReportModel.cs" />
+    <Compile Include="Models\ReportModels\PropertiesByReservationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reports\DataSets\CitiesByCountryDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CitiesByCountryDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DataSets\propertiesByCustomerDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>propertiesByCustomerDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\DataSets\ReservationByCustomer.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReservationByCustomer.xsd</DependentUpon>
     </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Startup.cs" />
@@ -315,6 +327,28 @@
     </None>
     <Content Include="Reports\DataSets\CitiesByCountryDataSet.xss">
       <DependentUpon>CitiesByCountryDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\DataSets\propertiesByCustomerDataSet.xsc">
+      <DependentUpon>propertiesByCustomerDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\DataSets\propertiesByCustomerDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>propertiesByCustomerDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\DataSets\propertiesByCustomerDataSet.xss">
+      <DependentUpon>propertiesByCustomerDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="Reports\DataSets\ReservationByCustomer.xsc">
+      <DependentUpon>ReservationByCustomer.xsd</DependentUpon>
+    </Content>
+    <None Include="Reports\DataSets\ReservationByCustomer.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReservationByCustomer.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="Reports\DataSets\ReservationByCustomer.xss">
+      <DependentUpon>ReservationByCustomer.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -458,6 +492,8 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Reports\RdlcFiles\citiesByCountryReport.rdlc" />
+    <EmbeddedResource Include="Reports\RdlcFiles\propertiesByCustomerReport.rdlc" />
+    <EmbeddedResource Include="Reports\RdlcFiles\ReservationByCustomReport.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

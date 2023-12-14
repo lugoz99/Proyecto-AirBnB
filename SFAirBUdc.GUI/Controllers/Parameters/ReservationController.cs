@@ -7,6 +7,11 @@ using SFAirBUdc.Repository.Contracts.DbModel.Parameters;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using Microsoft.Reporting.WebForms;
+using SFAirBUdc.GUI.Models.ReportModels;
+using System.Collections.Generic;
+using SFAirBUdc.Repository.Implementatios.DataModel;
+using System;
 
 namespace SFAirBUdc.GUI.Controllers.Parameters
 {
@@ -223,6 +228,60 @@ namespace SFAirBUdc.GUI.Controllers.Parameters
             app.DeleteRecord(id);
             return RedirectToAction("Index");
         }
+
+
+        public ActionResult GenerateReport(string format = "PDF")
+        {
+            // traer todas las ciudades
+            var list = app.GellAllRecord();
+            CityMapperGUI cityMapperGUI = new CityMapperGUI();
+            List<PropertiesByReservationModel> recordsList = new List<PropertiesByReservationModel>();
+
+            
+            foreach (var property in list)
+            {
+                recordsList.Add(
+                    new PropertiesByReservationModel
+                    {
+                        Id = property.Id.ToString(),
+                        Price = property.Price.ToString(),
+                        CustomerId = property.Customer.Id.ToString(),
+                        FirstName = property.Customer.FirstName,
+                        Address = property.Property.PropertyAddress,
+                    });
+            }
+            string reportPath = Server.MapPath("~/Reports/RdlcFiles/ReservationByCustomReport.rdlc");
+            //List<string> dataSets = new List<string> { "CustomerList" };
+            // el local report nos permite renderizar el reporte , es decir, convertirlo a un formato que se pueda mostrar en el navegador
+            LocalReport lr = new LocalReport();
+
+            lr.ReportPath = reportPath;
+            lr.EnableHyperlinks = true;
+
+            Warning[] warnings;
+            string[] streams;
+            byte[] renderedBytes;
+            string mimeType, encoding, fileNameExtension;
+
+            ReportDataSource datasource = new ReportDataSource("ReservationByCustomer", recordsList);
+            lr.DataSources.Add(datasource);
+
+
+            renderedBytes = lr.Render(
+            format,
+            string.Empty,
+            out mimeType,
+            out encoding,
+            out fileNameExtension,
+            out streams,
+            out warnings
+            );
+            // renderizo el reporte Y se muestra en el navegador
+            return File(renderedBytes, mimeType);
+        }
+
+
+
 
     }
 }

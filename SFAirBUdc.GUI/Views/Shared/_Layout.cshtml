@@ -29,11 +29,12 @@
                     <li>@Html.ActionLink("PropertyOwner", "Index", "PropertyOwner", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Customer", "Index", "Customer", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Reservation", "Index", "Reservation", new { area = "" }, new { @class = "nav-link" })</li>
-                    @using Microsoft.AspNet.Identity
-                    @if (Request.IsAuthenticated)
-                    {
-                        <li>@Html.ActionLink("País", "Index", "Country", new { area = "" }, new { @class = "nav-link" })</li>
-                    }
+                    <li>@Html.ActionLink("País", "Index", "Country", new { area = "" }, new { @class = "nav-link" })</li>
+                    @*@using Microsoft.AspNet.Identity
+        @if (Request.IsAuthenticated)
+        {
+            <li>@Html.ActionLink("País", "Index", "Country", new { area = "" }, new { @class = "nav-link" })</li>
+        }*@
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
